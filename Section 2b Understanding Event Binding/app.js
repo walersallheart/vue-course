@@ -3,6 +3,14 @@ const app = Vue.createApp({
     return {
       counter: 0,
     };
+  },
+  methods:{
+    increment(){
+      this.counter++;
+    },
+    decrement(){
+      this.counter--;
+    }
   }
 });
 
