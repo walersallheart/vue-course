@@ -7,6 +7,14 @@ const app = Vue.createApp({
     };
   },
   methods:{
+    outputFullName(){
+      console.log('outputFullName');
+      if (this.name === '') {
+        return '';
+      }
+
+      return `${this.name} Wayne`;
+    },
     submitForm(event){
       
     },
