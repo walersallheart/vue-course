@@ -22,8 +22,7 @@
         :class="boxAClasses"
         @click="boxSelected('A')"></div>
       <div
-        class="demo"
-        :class="{active:boxBSelected}"
+        :class="['demo', {active:boxBSelected}]"
         @click="boxSelected('B')"></div>
       <div
         class="demo"
