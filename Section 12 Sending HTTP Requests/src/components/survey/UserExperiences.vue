@@ -39,10 +39,15 @@ export default {
     loadExperiences() {
       this.isLoading = true;
 
+      this.error = null;
+
       fetch(FIREBASE_URL + '/surveys.json').then(response => {
         if (response.ok) {
           return response.json();
         }
+      })
+      .catch(() => {
+        this.error = 'Something went wrong, please try again later.';
       })
       .then(data => {
         this.isLoading = false;
