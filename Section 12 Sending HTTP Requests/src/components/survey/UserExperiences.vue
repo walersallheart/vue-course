@@ -7,6 +7,7 @@
       </div>
       <p v-if="isLoading">Loading...</p>
       <p v-else-if="!isLoading && (!results || results.length === 0)"> No stored experiences found.</p>
+      <p v-else-if="!isLoading && error">{{ error }}</p>
       <ul v-else-if="!isLoading && results && results.length > 0">
         <survey-result
           v-for="result in results"
@@ -30,7 +31,8 @@ export default {
   data() {
     return {
       results:  [],
-      isLoading: false
+      isLoading: false,
+      error: null
     }
   },
   methods: {
@@ -56,6 +58,10 @@ export default {
         }
 
         this.results = results;
+      })
+      .catch(() => {
+        this.isLoading = false;
+        this.error = 'Failed to fetch data - please try again later';
       });
     }
   },
