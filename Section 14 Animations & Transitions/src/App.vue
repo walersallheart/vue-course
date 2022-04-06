@@ -76,7 +76,7 @@ button:active {
   border-radius: 12px;
 }
 .animate{
-  animation: slide-fade 0.3s ease-out;
+  animation: slide-fade 0.3s ease-out forwards;
 }
 
 @keyframes slide-fade {
