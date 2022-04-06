@@ -22,7 +22,7 @@ export default {
   },
   methods: {
     addTen() {
-      this.$store.commit({
+      this.$store.dispatch({
         type: 'increase',
         value: 10
       });
