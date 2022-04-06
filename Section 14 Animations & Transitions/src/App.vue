@@ -1,33 +1,15 @@
 <template>
-  <div class="container">
-    <users-list/>
-  </div>
-  <div class="container">
-    <div class="block" :class="{ animate: animatedBlock }"></div>
-    <button @click="animateBlock">Animate</button>
-  </div>
-  <div class="container">
-    <transition>
-      <p v-if="paraIsVisible">This is only sometimes visible...</p>
-    </transition>
-    <button @click="toggleParagraph">Toggle Paragraph</button>
-  </div>
-  <base-modal @close="hideDialog" v-if="dialogIsVisible">
-    <p>This is a test dialog!</p>
-    <button @click="hideDialog">Close it!</button>
-  </base-modal>
-  <div class="container">
-    <button @click="showDialog">Show Dialog</button>
-  </div>
+    <router-view v-slot="slotProps">
+      <transition name="route" mode="out-in">
+        <component :is="slotProps.Component"></component>
+      </transition>
+    </router-view>
 </template>  
 
 <script>
-import UsersList from './components/UsersList.vue';
 
 export default {
-  components:{
-      UsersList
-  },
+  components:{},
   data() {
     return {
       animatedBlock: false,
@@ -125,7 +107,16 @@ button:active {
   transform:translateY(30px); 
 }
 
-@keyframes slide-fade {
+.route-enter-from,
+.route-enter-active{
+  animation:slide-scale 0.5s;
+}
+
+.route-enter-to{
+
+}
+
+@keyframes slide-scale {
   0%{
     transform: translateX(0) scale(1);
   }
