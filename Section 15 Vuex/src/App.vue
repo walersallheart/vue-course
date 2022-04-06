@@ -28,13 +28,13 @@ export default {
   methods: {
     addTen() {
       this.$store.dispatch({
-        type: 'increase',
+        type: 'numbers/increase',
         value: 10
       });
     }
   },
   computed: {
-     isAuth() {
+    isAuth() {
       return this.$store.getters.userIsAuthenticated;
     }
   }

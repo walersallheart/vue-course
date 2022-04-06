@@ -10,7 +10,7 @@ export default {
         counter() {
             return this.finalCounter;
         },
-        ...mapGetters(['finalCounter'])
+        ...mapGetters('numbers', ['finalCounter'])
     },
 }
 </script>
