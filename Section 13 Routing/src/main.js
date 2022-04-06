@@ -30,8 +30,21 @@ const router = createRouter({
                 footer: UsersFooter
             }, 
         },
-        { path:'/:notFound(.*)', redirect:'/teams' },
-    ]
+        { path:'/:notFound(.*)', redirect:'/teams' }
+    ],
+    scrollBehavior(to, from, savedPosition) {
+        if (savedPosition) { //this will scroll the user back where they were if they go back
+            return savedPosition;
+        }
+
+        console.log({to});
+        console.log({from});
+        console.log({savedPosition});
+
+        return {
+            left: 0, top: 0
+        }
+    }
 });
 
 const app = createApp(App);
