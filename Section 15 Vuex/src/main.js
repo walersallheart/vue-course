@@ -11,19 +11,37 @@ const store = createStore({
     },
     mutations:  {
         increment(state) {
+            console.group('increment mutation');
+            console.log(state);
+            console.groupEnd();
+
             state.counter = state.counter + 1;
         },
         increase(state, payload) {
+            console.group('increase mutation');
+            console.log(state);
+            console.log(payload);
+
+            console.groupEnd();
+
             state.counter = state.counter + payload.value;
         }
     },
     actions: { //actions can be asynchronous, mutations MUST be synchronous
         increment(context) {
+            console.group('increment action');
+            console.log(context);
+            console.groupEnd();
+
             setTimeout(function(){
                 context.commit('increment');
             }, 2000);
         },
         increase(context, payload) {
+            console.group('increase action');
+            console.log(context);
+            console.log(payload);
+            console.groupEnd();
             context.commit('increase', payload);
         }
     },
