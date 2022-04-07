@@ -17,6 +17,7 @@
 
 <script>
     export default {
+
         data() {
             return {
                 email: '',
@@ -35,6 +36,14 @@
                     this.formIsValid = false;
                     return;
                 }
+
+                this.$store.dispatch('requests/contactCoach', {
+                    coachId: this.$route.params.id,
+                    email: this.email,
+                    message: this.message
+                });
+
+                this.$router.replace('/coaches')
             }
         }
     }
